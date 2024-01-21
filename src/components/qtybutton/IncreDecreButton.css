@@ -1,0 +1,17 @@
+.qtybtn .input-group {
+  width: 138px;
+  height: 40px;
+  padding: 0 10px;
+  background: var(--bs-neutral-100);
+}
+
+.btn-link {
+  height: 40px;
+}
+.qtybtn .input-group input {
+  height: 40px;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  padding: 8px 4px;
+}
