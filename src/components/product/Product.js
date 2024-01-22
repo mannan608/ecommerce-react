@@ -1,9 +1,13 @@
 import Images from "../../assets/Images";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 import "./Product.css";
+import { useContext } from "react";
 
 const Product = ({ product }) => {
   const { id, image, name, price } = product;
+  const { addToCart } = useContext(CartContext);
+
   return (
     <div className="col-lg-3 col-md-4">
       <div className="product">
@@ -21,7 +25,10 @@ const Product = ({ product }) => {
                 <del>$2</del>
               </div>
               <div className="cart_action">
-                <button className="btn btn-secondary btn-sm">
+                <button
+                  className="btn btn-secondary btn-sm"
+                  onClick={() => addToCart(product)}
+                >
                   {" "}
                   <img
                     src={Images.cart_btn_20}

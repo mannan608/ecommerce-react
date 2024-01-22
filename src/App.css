@@ -1306,3 +1306,14 @@ form .mb-3 {
 .dropdown-toggle::after {
   display: none;
 }
+.list-group {
+  width: 100%;
+  padding: 0 !important;
+  --bs-list-group-item-padding-x: 0;
+  --bs-list-group-item-padding-y: 0;
+  --bs-list-group-action-hover-bg: none;
+  --bs-list-group-active-color: none;
+  --bs-list-group-active-bg: none;
+  --bs-list-group-border-width: 0px;
+  --bs-list-group-action-active-bg: none !important;
+}

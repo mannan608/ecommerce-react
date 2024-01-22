@@ -1,8 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import Images from "../../assets/Images";
 import "./Navbar.css";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 const Navbar = () => {
+  const { CartItem } = useContext(CartContext);
+
   return (
     <div className="navbar-wrapper d-flex align-items-center">
       <div className="container-fluid">
@@ -56,7 +60,9 @@ const Navbar = () => {
             <Link className="carts-link cart d-flex gap-3" to="/carts">
               <div className="cart-icon d-flex align-items-center justify-content-center position-relative">
                 <img src={Images.cart} alt="cart" />
-                <span className="badge text-bg-danger">4</span>
+                <span className="badge text-bg-danger">
+                  {CartItem.length === 0 ? "" : CartItem.length}
+                </span>
               </div>
               Your Cart
             </Link>
