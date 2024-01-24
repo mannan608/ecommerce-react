@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-// import IncreDecreButton from "../components/qtybutton/IncreDecreButton";
 import { Link } from "react-router-dom";
 import CartProduct from "../components/cartitems/CartProduct";
 
 const Carts = () => {
   const { CartItem, RemoveItem } = useContext(CartContext);
-
-  // console.log("mannan price", CartItem);
 
   return (
     <div className="component-wrapper">

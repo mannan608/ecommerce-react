@@ -1,15 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
-
 const ProductImgs = ({ setMainImage, image, mainImage }) => {
-  // const [mainImage, setMainImage] = useState(null);
-
-  // useEffect(() => {
-  //   if (image?.length > 0) {
-  //     setMainImage(image[0]);
-  //   }
-  // }, [image]);
-
   return (
     <div class="product-image d-flex gap-4">
       <div class="thumbnail-product-img d-flex flex-column gap-3 ">

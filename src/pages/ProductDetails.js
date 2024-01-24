@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import ProductImgs from "../components/product/ProductImgs";
-import IncreDecreButton from "../components/qtybutton/IncreDecreButton";
 import Colors from "../components/product/Colors";
 import { CartContext } from "../context/CartContext";
 
@@ -72,7 +71,7 @@ const ProductDetails = () => {
                   />
                 </div>
 
-                <div className="d-flex flex-column gap-4">
+                <div className="d-flex flex-column gap-4 mt-4">
                   <div className="cart-action d-flex gap-4">
                     <button
                       type="button"

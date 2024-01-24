@@ -1,14 +1,9 @@
-// import React, { useContext } from "react";
 import { useState } from "react";
-import IncreDecreButton from "../qtybutton/IncreDecreButton";
 import "./CartItem.css";
-// import { CartContext } from "../../context/CartContext";
 import Images from "../../assets/Images";
-import Colors from "../product/Colors";
 
 const CartProduct = (cartProductDetails) => {
   const { item, RemoveItem } = cartProductDetails;
-  // console.log("Cart Items", cartProductDetails);
   const [newqty, setnewQty] = useState(item.qty);
   const setIncress = () => {
     setnewQty(newqty + 1);
