@@ -4,10 +4,9 @@ import { CartContext } from "../../context/CartContext";
 import "./Product.css";
 import { useContext } from "react";
 
-const Product = ({ product }) => {
+const Product = ({ product, notifyAddedToCart }) => {
   const { id, image, name, price } = product;
   const { addToCart } = useContext(CartContext);
-
   return (
     <div className="col-lg-3 col-md-4">
       <div className="product">
@@ -27,9 +26,11 @@ const Product = ({ product }) => {
               <div className="cart_action">
                 <button
                   className="btn btn-secondary btn-sm"
-                  onClick={() => addToCart(product)}
+                  onClick={() => {
+                    addToCart(product);
+                    notifyAddedToCart(product);
+                  }}
                 >
-                  {" "}
                   <img
                     src={Images.cart_btn_20}
                     alt="product Name"

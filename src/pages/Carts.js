@@ -6,7 +6,9 @@ import CartProduct from "../components/cartitems/CartProduct";
 
 const Carts = () => {
   const { CartItem, RemoveItem } = useContext(CartContext);
-  // console.log(totalAmount);
+
+  // console.log("mannan price", CartItem);
+
   return (
     <div className="component-wrapper">
       <div className="container-fluid">
@@ -46,8 +48,10 @@ const Carts = () => {
             <h6>Order Summery</h6>
             <ul className="list-group mt-4 gap-3">
               <li className="list-group-item d-flex justify-content-between align-items-center">
-                <p>Sub Total (3 Items)</p>
-                <p className="txt-black">500$</p>
+                <p>
+                  Sub Total ({CartItem.length === 0 ? "" : CartItem.length})
+                </p>
+                <p className="txt-black">{}</p>
               </li>
               <li className="list-group-item d-flex justify-content-between align-items-center">
                 <p>Coupon Code</p>

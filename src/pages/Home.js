@@ -5,6 +5,8 @@ import Dropdown from "../components/dropdown/Dropdown";
 import Product from "../components/product/Product";
 import { ProductContext } from "../context/ProductContext";
 import Category from "../assets/category/Category";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const { Products } = useContext(ProductContext);
@@ -41,9 +43,25 @@ const Home = () => {
     SearchProduct();
   }, [Items]);
 
+  const notifyAddedToCart = (product) =>
+    toast.success(`${product.name} added to cart!`, {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+      style: {
+        backgroundColor: "#fff",
+        color: "#000",
+      },
+    });
+
   return (
     <div className="component-wrapper">
       <div className="container-fluid">
+        <ToastContainer />
         <div className="hero-image d-flex align-items-center justify-content-between">
           <h2 className="fw-600">
             Customize Your Dream Wardrobe <br />
@@ -76,7 +94,13 @@ const Home = () => {
             <div className="show-result mt-4">
               <div className="row">
                 {SrcItem?.map((product) => {
-                  return <Product product={product} key={product.id} />;
+                  return (
+                    <Product
+                      product={product}
+                      key={product.id}
+                      notifyAddedToCart={notifyAddedToCart}
+                    />
+                  );
                 })}
               </div>
             </div>

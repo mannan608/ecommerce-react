@@ -3,45 +3,71 @@ import { useState } from "react";
 import IncreDecreButton from "../qtybutton/IncreDecreButton";
 import "./CartItem.css";
 // import { CartContext } from "../../context/CartContext";
+import Images from "../../assets/Images";
+import Colors from "../product/Colors";
 
-const CartProduct = ({ item, RemoveItem }) => {
-  // const { CartItem } = useContext(CartContext);
-  const { name, price, colors, image, qty } = item;
-
-  const [newqty, setnewQty] = useState(qty);
+const CartProduct = (cartProductDetails) => {
+  const { item, RemoveItem } = cartProductDetails;
+  // console.log("Cart Items", cartProductDetails);
+  const [newqty, setnewQty] = useState(item.qty);
   const setIncress = () => {
     setnewQty(newqty + 1);
   };
   const setDecress = () => {
-    setnewQty(newqty - 1);
+    newqty > 1 ? setnewQty(newqty - 1) : setnewQty(1);
   };
+  let total = 0;
+  total = item.price * newqty;
 
   return (
-    <div className="cart-item d-flex justify-content-between ">
+    <div className="cart-item d-flex justify-content-between align-items-center ">
       <div className="cart-item-info d-flex gap-3 w-50">
-        <div className="cart-item-img">
-          <img src={image} alt={name} />
-        </div>
-        <div className="cart-item-name">
-          <p className="txt-black">{name}</p>
+        {item.mainImage ? (
+          <div className="cart-item-img">
+            <img src={item.mainImage.url} alt={item.name} />
+          </div>
+        ) : (
+          <div className="cart-item-img">
+            <img src={item.image} alt={item.name} />
+          </div>
+        )}
 
-          <button
-            className={`btn btn-exx-sm  `}
-            style={{ background: colors[0] }}
-          ></button>
+        <div className="cart-item-name">
+          <p className="txt-black">{item.name}</p>
+          {item.isActive ? (
+            <button
+              className={`btn btn-exx-sm  `}
+              style={{ background: item.isActive }}
+            ></button>
+          ) : (
+            <button
+              className={`btn btn-exx-sm  `}
+              style={{ background: item.colors[0] }}
+            ></button>
+          )}
         </div>
       </div>
       <div className="price">
         <span>
-          <p>{price}</p>
+          <p>{total}</p>
         </span>
-        <del>28$</del>
       </div>
-      <IncreDecreButton
-        newqty={newqty}
-        setIncress={setIncress}
-        setDecress={setDecress}
-      />
+
+      <div className="qtybtn d-flex flex-column gap-2 ">
+        <div className="input-group">
+          <button className="btn btn-link" onClick={() => setDecress()}>
+            <img src={Images.minus} alt="minus" />
+          </button>
+          <input
+            type="text"
+            className="form-control counter-input"
+            value={newqty}
+          />
+          <button className="btn btn-link" onClick={() => setIncress()}>
+            <img src={Images.plus} alt="plus" />
+          </button>
+        </div>
+      </div>
 
       <div
         className="cart-item-action d-flex justify-content-center align-items-center"

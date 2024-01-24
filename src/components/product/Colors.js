@@ -2,14 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./Product.css";
 
-const Colors = ({ colors }) => {
-  const [isActive, setisActive] = useState(null);
+const Colors = ({ setisActive, isActive, colors }) => {
+  // const [isActive, setisActive] = useState(null);
 
-  useEffect(() => {
-    if (colors?.length > 0) {
-      setisActive(colors[0]);
-    }
-  }, [colors]);
+  // useEffect(() => {
+  //   if (colors?.length > 0) {
+  //     setisActive(colors[0]);
+  //   }
+  // }, [colors]);
 
   return (
     <>

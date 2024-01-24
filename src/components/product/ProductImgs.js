@@ -1,14 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const ProductImgs = ({ image }) => {
-  const [mainImage, setMainImage] = useState(null);
+const ProductImgs = ({ setMainImage, image, mainImage }) => {
+  // const [mainImage, setMainImage] = useState(null);
 
-  useEffect(() => {
-    if (image?.length > 0) {
-      setMainImage(image[0]);
-    }
-  }, [image]);
+  // useEffect(() => {
+  //   if (image?.length > 0) {
+  //     setMainImage(image[0]);
+  //   }
+  // }, [image]);
 
   return (
     <div class="product-image d-flex gap-4">
